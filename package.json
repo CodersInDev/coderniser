@@ -1,0 +1,26 @@
+{
+  "name": "coderniser",
+  "version": "0.0.1",
+  "description": "A projects and tasks manager",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodersInDev/coderniser.git"
+  },
+  "keywords": [
+    "tasks"
+  ],
+  "author": "CodersInDev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodersInDev/coderniser/issues"
+  },
+  "homepage": "https://github.com/CodersInDev/coderniser",
+  "dependencies": {
+    "github": "^0.2.4",
+    "hapi": "^8.6.1"
+  }
+}
