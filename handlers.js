@@ -26,7 +26,8 @@ var handlers = {
         return reply.redirect("/issues");
   },
   repos : function(request, reply){
-    reply.file("public/templates/repos.html");
+    var person = request.auth.credentials.profile.username;
+    reply.view("public/templates/repos.html", person);
   }
 };
 
