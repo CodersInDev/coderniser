@@ -1,0 +1,56 @@
+/************Reset**************/
+html, body, div, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, li, form, fieldset, legend, label, table, header, footer, nav, section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+header, footer, nav, section, article, hgroup, figure {
+    display: block;
+}
+
+legend {
+    display: none;
+}
+/************End Reset**************/
+html,body,#content{
+    width:100%;
+}
+
+header {
+	position: fixed;
+	background-color: grey;
+	width: 100%;
+	top:0;
+	height: 40px;
+}
+
+header > p {
+	text-align: right;
+}
+
+#content {
+	/*margin: 0 auto;*/
+	padding-top: 50px;
+}
+
+#activityLog, #priority, #calendar {
+	width: 33%;
+	display: inline-block;
+}
+
+#activityLog {
+	background-color: red;
+}
+
+#priority {
+	background-color: green;
+}
+
+#calendar {
+	background-color: yellow;
+}

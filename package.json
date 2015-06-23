@@ -21,6 +21,7 @@
   "homepage": "https://github.com/CodersInDev/coderniser",
   "dependencies": {
     "github": "^0.2.4",
-    "hapi": "^8.6.1"
+    "hapi": "^8.6.1",
+    "handlebars": "~3.0.3"
   }
 }
