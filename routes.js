@@ -5,6 +5,22 @@ var routes = [
     method: 'GET',
     handler: handlers.repositories
   },
+  {
+    method: 'GET',
+    path: '/static/{path*}',
+    handler:  {
+      directory: {
+        path: './'
+      }
+    }
+  },  
+  {
+    path: '/issues',
+    method: 'GET',
+    handler: function(req, res){
+    	res.file("issues.html")
+    }
+  }
 
   {
   	path: '/dashboard',
@@ -21,7 +37,6 @@ var routes = [
         }
     }
  }
-
 ];
 
 module.exports = routes;
