@@ -1,3 +1,27 @@
 *{
   font-family: 'Lato', sans-serif;
 }
+
+#column1, #column2, #column3 {
+  background-color: #BBE2F2;
+  border: 1px solid;
+  float: left;
+  height: 100vh;
+  margin: 0;
+  width: 33%;
+}
+
+#column2, #column3{
+  visibility: hidden;
+  transition-delay: 5s;
+}
+
+#column2:target, #column3:target{
+  visibility: visible;
+
+}
+
+#id > li {
+  font-size: 16px;
+  padding-top: 5px;
+}
