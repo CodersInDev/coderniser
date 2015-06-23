@@ -5,21 +5,21 @@ var routes = [
     method: 'GET',
     handler: handlers.repositories
   },
-  
+
   {
     path: '/static/{path*}',
-    method: 'GET',   
+    method: 'GET',
     handler:  {
       directory: {
         path: './'
       }
     }
-  }, 
-   
+
+  },
   {
-    path: '/issues',
+    path: '/repos',
     method: 'GET',
-    handler: handlers.issues
+    handler: handlers.repos
   },
 
   {

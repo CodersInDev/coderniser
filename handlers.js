@@ -15,6 +15,9 @@ var handlers = {
       message: "Issues"
     };
     reply.view("issues", context);
+  },
+  repos : function(request, reply){
+    reply.file("public/templates/repos.html");
   }
 };
 
