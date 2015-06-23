@@ -9,8 +9,6 @@ function getUserOrgs(){
 	});
 }
 
-
-
 $('#button').click(function getRepos(){
 	$.getJSON("https://api.github.com/users/minaorangina/repos", function(data){
 		$('#repos').append("<h1>Your repos</h1>");
@@ -32,7 +30,6 @@ $('#button').click(function getRepos(){
 });
 
 function getContributors(owner, repo){
-
 	$.getJSON("https://api.github.com/repos/" + owner + "/" + repo + "/contributors", function(data){
 		console.log(data);
 		var contents = "";
