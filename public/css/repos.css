@@ -35,6 +35,14 @@
   transition: 5s visibility;
 }
 
+#column3{
+    background-color: #DEEEFF
+}
+
+#chosen-repo{
+    color: grey;
+}
+
 #column2:target, #column3:target{
   visibility: visible;
   transition: 5s visibility;

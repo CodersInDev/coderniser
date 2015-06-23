@@ -46,7 +46,7 @@ function getContributors(owner, repo){
 			contents += "<img id='avatar' width='30px' height='30px' src=" + e.avatar_url + "/>" + e.login + "<br>";
 		});
 
-		document.getElementById('contributors').innerHTML = "<br><strong>" + owner + "/" + repo + "</strong><br>" + contents + "<br>";
+		$('#contributors').html("<h1 id='chosen-repo'><em>" + owner + "/" + repo + "</em></h1>" + contents + "<br>");
 		$('#column3').css('visibility', 'visible');
 	});
 }
