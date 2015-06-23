@@ -2,26 +2,45 @@
   font-family: 'Lato', sans-serif;
 }
 
+#button{
+  border-style: none;
+  background-color: grey;
+  width: 50%;
+  height: 5%;
+  margin: 0 auto;
+}
+
+#button:hover{
+  background-color: #F5EFE4;
+}
+
 #column1, #column2, #column3 {
-  background-color: #BBE2F2;
-  border: 1px solid;
+  background-color: #E8E4F5;
   float: left;
+  font-size: 18px;
   height: 100vh;
   margin: 0;
   width: 33%;
 }
 
 #column2, #column3{
+  border-left: 1px solid;
   visibility: hidden;
-  transition-delay: 5s;
+  transition: 5s visibility;
 }
 
 #column2:target, #column3:target{
   visibility: visible;
+  transition: 5s visibility;
 
 }
 
-#id > li {
-  font-size: 16px;
-  padding-top: 5px;
+li {
+  font-size: 18px;
+  padding: 10px 10px;
+  text-decoration: none;
+}
+
+li:hover {
+  background-color: #F5EFE4;
 }
