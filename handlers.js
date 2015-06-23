@@ -16,9 +16,9 @@ var handlers = {
       request.auth.session.set(request.auth.credentials);
       return reply.redirect('/issues');
   },
-  issues: function(req, res){
+  issues: function(req, reply){
       console.log("routes auth", req.auth);
-      res.file("issues.html");
+      reply.file("public/templates/issues.html");
   },
   main: function(request, reply){
         console.log("handler auth",request.auth);
