@@ -17,6 +17,7 @@ var handlers = {
     reply.view("issues", context);
   },
   repos : function(request, reply){
+  //  var person = request.auth.credentials.profile.username;
     reply.file("public/templates/repos.html");
   }
 };

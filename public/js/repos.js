@@ -9,7 +9,10 @@ function getUserOrgs(){
 	});
 }
 
+
+
 $('#button').click(function getRepos(){
+	//var person = request.auth.credentials.profile.username;
 	$.getJSON("https://api.github.com/users/minaorangina/repos", function(data){
 		$('#repos').append("<h1>Your repos</h1>");
 		for (var i = data.length - 1; i >= 0; i -= 1) {
@@ -30,14 +33,20 @@ $('#button').click(function getRepos(){
 });
 
 function getContributors(owner, repo){
+
 	$.getJSON("https://api.github.com/repos/" + owner + "/" + repo + "/contributors", function(data){
+		$('#contributors').append("<h1>Contributors</h1>");
+
 		console.log(data);
+		//$('#repo-members').text = data;
+
+		//$('#contributors').append("<h1>Your repos</h1>");
 		var contents = "";
 		data.forEach(function(e){
 			contents += "<img id='avatar' width='30px' height='30px' src=" + e.avatar_url + "/>" + e.login + "<br>";
 		});
 
-		document.getElementById('contributors').innerHTML = "<h1>Contributors</h1><strong>" + owner + "/" + repo + "</strong><br>" + contents + "<br>";
+		document.getElementById('contributors').innerHTML = "<br><strong>" + owner + "/" + repo + "</strong><br>" + contents + "<br>";
 		$('#column3').css('visibility', 'visible');
 	});
 }
