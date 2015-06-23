@@ -5,6 +5,7 @@ var routes = [
     method: 'GET',
     handler: handlers.repositories
   },
+  
   {
     path: '/static/{path*}',
     method: 'GET',   
