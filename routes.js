@@ -13,14 +13,14 @@ var routes = [
         path: './'
       }
     }
-  },  
+  },
   {
-    path: '/issues',
+    path: '/repos',
     method: 'GET',
     handler: function(req, res){
-    	res.file("issues.html")
+    	res.file("repos.html");
     }
-  }
+  },
 
   {
   	path: '/dashboard',
