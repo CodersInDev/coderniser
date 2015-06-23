@@ -17,6 +17,11 @@ var routes = [
 
   },
   {
+    path: '/issues',
+    method: 'GET',
+    handler: handlers.issues
+  },
+  {
     path: '/repos',
     method: 'GET',
     handler: handlers.repos
