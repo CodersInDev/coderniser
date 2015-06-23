@@ -4,7 +4,8 @@
   "description": "A projects and tasks manager",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,10 @@
   },
   "homepage": "https://github.com/CodersInDev/coderniser",
   "dependencies": {
+    "bell": "^4.0.0",
     "github": "^0.2.4",
+    "handlebars": "~3.0.3",
     "hapi": "^8.6.1",
-    "handlebars": "~3.0.3"
+    "hapi-auth-cookie": "^3.0.1"
   }
 }

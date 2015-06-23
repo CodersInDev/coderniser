@@ -1,3 +1,4 @@
+
 var handlers = {
   repositories: function(request, reply){
     //get the list of repositories for an organisation
@@ -9,6 +10,11 @@ var handlers = {
   		message: "Welcome user"
   	}
   	reply.view("dashboard", context);
+  },
+  login: function(request, reply){
+	console.log("handler auth",request.auth)
+	request.auth.session.set(request.auth.credentials)
+	return reply.redirect("/issues")
   }
 };
 

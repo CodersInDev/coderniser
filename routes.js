@@ -4,6 +4,13 @@ var routes = [
     path: '/',
     method: 'GET',
     handler: handlers.repositories
+ //    config: {
+ //    	auth: {
+ //    		mode: "try",
+ //    		strategy: "session"
+ //    	},
+ //    	handler: handlers.repositories
+	// }
   },
   {
     method: 'GET',
@@ -17,10 +24,17 @@ var routes = [
   {
     path: '/issues',
     method: 'GET',
-    handler: function(req, res){
-    	res.file("issues.html")
+    config: {
+    	auth: {
+    		mode: "try",
+    		strategy: "session"
+    	},
+    	handler: function(req, res){
+    		console.log("routes auth", req.auth);
+    		res.file("issues.html")
+    	}
     }
-  }
+  },
 
   {
   	path: '/dashboard',
@@ -36,6 +50,14 @@ var routes = [
             path: './public'
         }
     }
+ },
+ {
+  	path: '/login',
+  	method: 'GET',
+  	config: {
+    	auth: 'github',
+    	handler: handlers.login
+	}
  }
 ];
 

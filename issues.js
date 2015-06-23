@@ -1,3 +1,8 @@
+
+// $("#loginButton").click(){
+	
+// }
+
 // get all issues assigned to the authenticated user (access_token)
 $("#userButton").click(function(){
 	var accessToken; //get access token from login
