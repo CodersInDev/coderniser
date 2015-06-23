@@ -7,8 +7,17 @@ var handlers = {
   	//some context message for now
   	var context = {
   		message: "Welcome user"
-  	}
+  	};
   	reply.view("dashboard", context);
+  },
+  issues: function(request, reply) {
+    var context = {
+      message: "Issues"
+    };
+    reply.view("issues", context);
+  },
+  repos : function(request, reply){
+    reply.file("public/templates/repos.html");
   }
 };
 
