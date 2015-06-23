@@ -1,26 +1,6 @@
 var handlers = require('./handlers.js');
 var routes = [
-  {
-    path: '/',
-    method: 'GET',
-    handler: handlers.repositories
-  },
 
-  {
-    path: '/static/{path*}',
-    method: 'GET',
-    handler:  {
-      directory: {
-        path: './'
-      }
-    }
-
-  },
-  {
-    path: '/issues',
-    method: 'GET',
-    handler: handlers.issues
-  },
   {
     path: '/repos',
     method: 'GET',
@@ -41,7 +21,41 @@ var routes = [
             path: './public'
         }
     }
- }
+ },
+
+ {
+     method: 'GET',
+     path: '/',
+     config: {
+         auth: {
+             mode: 'try',
+             strategy: 'session'
+         },
+         handler: handlers.main
+     }
+ },
+
+ {
+     path: '/issues',
+     method: 'GET',
+     config: {
+         auth: {
+             mode: "try",
+             strategy: "session"
+         },
+         handler: handlers.issues
+     }
+ },
+
+ {
+     method: 'GET',
+     path: '/login',
+     config: {
+         auth: 'github',
+         handler: handlers.login
+     }
+ },
+
 ];
 
 module.exports = routes;
