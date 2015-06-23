@@ -21,6 +21,22 @@ var routes = [
     	res.file("issues.html")
     }
   }
+
+  {
+  	path: '/dashboard',
+  	method: 'GET',
+  	handler: handlers.dashboard
+  },
+
+  {
+  	path: '/public/{path*}',
+  	method: 'GET',
+  	handler: {
+        directory: {
+            path: './public'
+        }
+    }
+ }
 ];
 
 module.exports = routes;

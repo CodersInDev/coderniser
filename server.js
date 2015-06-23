@@ -6,7 +6,14 @@ server.connection({
   port: process.env.PORT || 8100
 });
 
+server.views({
+	engines: {
+		html: require('handlebars')
+	},
+	path: __dirname + '/public/templates'
+});
+
 server.route(routes);
 server.start(function(){
-  console.log("The Coderniser server is running");
+  console.log('The Coderniser server is running at ', server.info.uri);
 });
