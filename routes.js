@@ -1,13 +1,10 @@
 var handlers = require('./handlers.js');
 var routes = [
+
   {
+    path: '/repos',
     method: 'GET',
-    path: '/static/{path*}',
-    handler:  {
-      directory: {
-        path: './'
-      }
-    }
+    handler: handlers.repos
   },
 
   {

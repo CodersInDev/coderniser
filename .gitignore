@@ -33,3 +33,6 @@ npm-debug.log
 *dump.rdb
 
 .env
+
+#key
+key.js

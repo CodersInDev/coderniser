@@ -24,6 +24,9 @@ var handlers = {
         console.log("handler auth",request.auth);
         request.auth.session.set(request.auth.credentials);
         return reply.redirect("/issues");
+  },
+  repos : function(request, reply){
+    reply.file("public/templates/repos.html");
   }
 };
 
