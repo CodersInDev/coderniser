@@ -8,13 +8,22 @@ var handlers = {
   	//some context message for now
   	var context = {
   		message: "Welcome user"
-  	}
+  	};
   	reply.view("dashboard", context);
   },
   login: function(request, reply){
-	console.log("handler auth",request.auth)
-	request.auth.session.set(request.auth.credentials)
-	return reply.redirect("/issues")
+      console.log(request.auth.credentials);
+      request.auth.session.set(request.auth.credentials);
+      return reply.redirect('/issues');
+  },
+  issues: function(req, res){
+      console.log("routes auth", req.auth);
+      res.file("issues.html");
+  },
+  main: function(request, reply){
+        console.log("handler auth",request.auth);
+        request.auth.session.set(request.auth.credentials);
+        return reply.redirect("/issues");
   }
 };
 

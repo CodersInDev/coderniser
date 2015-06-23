@@ -1,38 +1,12 @@
 var handlers = require('./handlers.js');
 var routes = [
   {
-    path: '/',
-    method: 'GET',
-    handler: handlers.repositories
- //    config: {
- //    	auth: {
- //    		mode: "try",
- //    		strategy: "session"
- //    	},
- //    	handler: handlers.repositories
-	// }
-  },
-  {
     method: 'GET',
     path: '/static/{path*}',
     handler:  {
       directory: {
         path: './'
       }
-    }
-  },  
-  {
-    path: '/issues',
-    method: 'GET',
-    config: {
-    	auth: {
-    		mode: "try",
-    		strategy: "session"
-    	},
-    	handler: function(req, res){
-    		console.log("routes auth", req.auth);
-    		res.file("issues.html")
-    	}
     }
   },
 
@@ -51,14 +25,40 @@ var routes = [
         }
     }
  },
+
  {
-  	path: '/login',
-  	method: 'GET',
-  	config: {
-    	auth: 'github',
-    	handler: handlers.login
-	}
- }
+     method: 'GET',
+     path: '/',
+     config: {
+         auth: {
+             mode: 'try',
+             strategy: 'session'
+         },
+         handler: handlers.main
+     }
+ },
+
+ {
+     path: '/issues',
+     method: 'GET',
+     config: {
+         auth: {
+             mode: "try",
+             strategy: "session"
+         },
+         handler: handlers.issues
+     }
+ },
+
+ {
+     method: 'GET',
+     path: '/login',
+     config: {
+         auth: 'github',
+         handler: handlers.login
+     }
+ },
+
 ];
 
 module.exports = routes;

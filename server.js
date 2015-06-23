@@ -1,33 +1,11 @@
 var Hapi = require('hapi');
 var server = new Hapi.Server();
+var Handlebars = require('handlebars');
 var routes = require ('./routes.js');
 
-
 server.connection({
-  port: process.env.PORT || 8100
+  port: process.env.PORT || 8000
 });
-
-server.register(require("hapi-auth-cookie"), function(error){
-	server.auth.strategy("session", "cookie", {
-		password: process.env.AUTHPASSWORD,
-		cookie: "sid",
-		isSecure: false
-		// redirectTo: "/"	
-	})
-})
-
-server.register(require("bell"), function(error){
-	server.auth.strategy("github", "bell", {
-		provider: "github",
-		password: process.env.AUTHPASSWORD,
-		clientId: process.env.APPID,
-		clientSecret: process.env.APPSECRET,
-		isSecure: false
-		// providerParams: {
-		// 	redirect_uri: server.info.uri + "/issues"
-		// }
-	})
-})
 
 server.views({
 	engines: {
@@ -36,7 +14,27 @@ server.views({
 	path: __dirname + '/public/templates'
 });
 
-server.route(routes);
-server.start(function(){
-  console.log('The Coderniser server is running at ', server.info.uri);
+server.register(require('hapi-auth-cookie'), function (err) {
+    server.auth.strategy('session', 'cookie', {
+        password: 'password',
+        cookie: 'sid-example',
+        isSecure: false
+    });
 });
+
+server.register(require('bell'), function(err){
+    server.auth.strategy('github', 'bell', {
+        provider: 'github',
+        password: 'password',
+        clientId: process.env.APPID,
+        clientSecret: process.env.APPSECRET,
+        isSecure: false,
+        providerParams: {
+            redirect_uri: server.info.uri + '/login'
+        }
+    });
+});
+
+server.route(routes);
+
+server.start();
