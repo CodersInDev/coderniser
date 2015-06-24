@@ -9,8 +9,6 @@ function getUserOrgs(){
 	});
 }
 
-
-
 $('#button').click(function getRepos(){
 	$.getJSON("https://api.github.com/users/minaorangina/repos", function(data){
 		$('#repos').append("<h1>Your repos</h1>");
@@ -27,8 +25,23 @@ $('#button').click(function getRepos(){
 			});
 		}
 
+		$('#column2').css('visibility', 'visible');
 	});
 });
+
+function getContributors(owner, repo){
+	$.getJSON("https://api.github.com/repos/" + owner + "/" + repo + "/contributors", function(data){
+		console.log(data);
+		var contents = "";
+		data.forEach(function(e){
+			contents += "<img id='avatar' width='30px' height='30px' src=" + e.avatar_url + "/>" + e.login + "<br>";
+		});
+
+		document.getElementById('contributors').innerHTML = "<h1>Contributors</h1><strong>" + owner + "/" + repo + "</strong><br>" + contents + "<br>";
+		$('#column3').css('visibility', 'visible');
+	});
+}
+
 
 
 function notify(){
@@ -41,18 +54,3 @@ function notify(){
 }
 
 //Notification.requestPermission(notify);
-
-function getContributors(owner, repo){
-	$.getJSON("https://api.github.com/repos/" + owner + "/" + repo + "/contributors", function(data){
-		console.log(data);
-		//$('#repo-members').text = data;
-
-		//$('#contributors').append("<h1>Your repos</h1>");
-		var contents = "";
-		data.forEach(function(e){
-			contents += "<img id='avatar' width='30px' height='30px' src=" + e.avatar_url + "/>" + e.login + "<br>";
-		});
-
-		document.getElementById('contributors').innerHTML = "<br><strong>" + owner + "/" + repo + "</strong><br>" + contents + "<br>";
-	});
-}
