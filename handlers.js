@@ -41,7 +41,7 @@ var handlers = {
         method: "GET",
         headers: {
           'Authorization': 'token ' + request.auth.credentials.token,
-          'User-Agent': 'simonLab'
+          'User-Agent': request.auth.credentials.profile.username
         }
       };
 
@@ -50,7 +50,16 @@ var handlers = {
         method: "GET",
         headers: {
           'Authorization': 'token ' + request.auth.credentials.token,
-          'User-Agent': 'simonLab'
+          'User-Agent': request.auth.credentials.profile.username
+        }
+      };
+
+      var optsRepos = {
+        uri: 'https://api.github.com/user/repos?type=owner',
+        method: "GET",
+        headers: {
+          'Authorization': 'token ' + request.auth.credentials.token,
+          'User-Agent': request.auth.credentials.profile.username,
         }
       };
 
@@ -59,23 +68,24 @@ var handlers = {
         context.avatar = user.avatar_url;
         requestGithub(optsOrgs,function(error, response, body){
           var organization = JSON.parse(body);
-          console.log(response);
           context.orgs = [];
-          // console.log(organization);
           for(var i = 0; i < organization.length; i++){
             context.orgs.push(organization[i].login);
           }
-          console.log(context);
+          requestGithub(optsRepos,function(error, response, body){
+            context.repos = [];
+            var repos = JSON.parse(body);
+            for(var y = 0; y < repos.length; y++){
+              context.repos.push(repos[y].name);
+            }
+            return reply.view("home", context);
+          });
         });
       });
 
       if(!request.auth.isAuthenticated){
           return reply.view('login');
       }
-
-      //
-      // var orgs = {one: 'minaorangina', two: 'plastic-cup', three: 'swift-club'};
-      reply.view("home", context);
     }
 
 };
