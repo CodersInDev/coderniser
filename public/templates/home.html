@@ -7,20 +7,32 @@
         <link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <div id='navbar'></div>
+        <div id="navbar"></div>
         <div id='container'>
-            <div id='column1'>
-                <div id="user-avatar">
-                    <img src={{avatar}} alt="mina's avatar" height="300px" width="auto" />
-                    <p id='user'>{{login}}
-                </div>
-            </div>
+            <div id='container-column1'>
 
-            <div id='column2'>
-              {{#each repos}}
-                {{this}}</br>
-              {{/each}}
-            </div>
+                <div id='column1'>
+                    <div id="user-avatar">
+                        <img src={{avatar}} alt="mina's avatar" height="300px" width="auto" />
+                        <p id='user'>{{login}}</div>
+                    </div><!--end of #user-avatar-->
+                </div><!--end of #column1-->
+            </div><!--end of #container-column1-->
+
+            <div id='container-column2'>
+                <div id='column2'>
+                    <h1 id='orgs-title'>Your organisations</h1>
+                    <div id="orgs">
+                        {{#each repos}}
+                        <div class="org-row">
+                            <p id="org-text">{{this}}</p>
+                        </div>
+                        {{/each}}
+                    </div><!--end of #orgs-->
+                </div><!--end of #column2-->
+            </div><!--end of #container-column2-->
+
+        </div><!--end of container-->
         </div>
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="public/js/repos.js" type="text/javascript"></script>

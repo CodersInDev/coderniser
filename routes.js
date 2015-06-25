@@ -53,8 +53,19 @@ var routes = [
                 path: './public'
             }
         }
-    }
+    },
 
+    {
+        method: 'POST',
+        path: '/create',
+        handler: handlers.create
+    },
+
+    {
+        method: 'GET',
+        path: '/dashboard/{repo}',
+        handler: handlers.repo
+    },
 ];
 
 module.exports = routes;

@@ -2,7 +2,7 @@ body{
   font-family: 'Muli', sans-serif;
   padding: 0;
   margin: 0;
-  color: #993996;
+  color: #B50D8B;
 }
 
 #navbar {
@@ -11,7 +11,6 @@ body{
     background-color: #88EAF7;
     background-color: #4DD2FF;
     background-color: #4FA9FF;
-
     position: fixed;
     top: 0;
     left: 0;
@@ -72,7 +71,7 @@ body{
     width: 60%;
     margin: 0 auto;
     /*margin-top: 50px;*/
-    background-color: #CCE6FF;
+    background-color: #9CCEFF;
 }
  .org-row{
      height: 50px;
@@ -80,8 +79,14 @@ body{
      border-bottom: 2.5px;
  }
 
+ a {
+     text-decoration: none;
+     color: #fff;
+ }
+
  .org-row:hover{
-     background-color: #4DD2FF;
+     background-color: #CCE6FF;
+     color: white;
  }
 
  .org-row > p {

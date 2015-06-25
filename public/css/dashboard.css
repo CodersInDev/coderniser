@@ -17,40 +17,61 @@ legend {
     display: none;
 }
 /************End Reset**************/
-html,body,#content{
+*{
+    box-sizing: border-box;
+}
+
+html,body,#container{
     width:100%;
+    font-family: 'Muli', sans-serif;
+}
+
+#container{
+    padding-top: 50px;
+    width: 100%;
 }
 
 header {
-	position: fixed;
-	background-color: grey;
-	width: 100%;
-	top:0;
-	height: 40px;
+    height: 50px;
+    background-color: #87F1FF;
+    background-color: #88EAF7;
+    background-color: #4DD2FF;
+    background-color: #4FA9FF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: right;
+    width: 100%;
 }
 
 header > p {
-	text-align: right;
+	text-align: left;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-#content {
-	/*margin: 0 auto;*/
-	padding-top: 50px;
+#column1, #column2, #column3, #column4{
+    background-color: #EDF8FA;
+    background-color: #DCF3F7;
+    /*background-color: #87E1FF;*/
+    border-right: 8px solid white;
+
+    display: inline-block;
+    font-size: 24px;
+    height: 100vh;
+    margin: 0 auto;
+
+    text-align: center;
+
+
+    width: 25%;
 }
 
-#activityLog, #priority, #calendar {
-	width: 33%;
-	display: inline-block;
+#column1{
+    float:left;
+    border-left: 8px solid white;
 }
 
-#activityLog {
-	background-color: red;
-}
-
-#priority {
-	background-color: green;
-}
-
-#calendar {
-	background-color: yellow;
+#column3, #column4{
+    float:left;
 }
