@@ -14,7 +14,7 @@
                 <div id='column1'>
                     <div id="user-avatar">
                         <img src={{avatar}} alt="mina's avatar" height="300px" width="auto" />
-                        <p id='user'>minaorangina</div>
+                        <p id='user'>{{login}}</div>
                     </div><!--end of #user-avatar-->
                 </div><!--end of #column1-->
             </div><!--end of #container-column1-->
@@ -23,22 +23,11 @@
                 <div id='column2'>
                     <h1 id='orgs-title'>Your organisations</h1>
                     <div id="orgs">
+                        {{#each repos}}
                         <div class="org-row">
-                            <p id="org-text">Fake organisation</p>
+                            <p id="org-text">{{this}}</p>
                         </div>
-                        <div class="org-row">
-                            <p id="org-text">Fake organisation</p>
-                        </div>
-                        <div class="org-row">
-                            <p id="org-text">Fake organisation</p>
-                        </div>
-                        <div class="org-row">
-                            <p id="org-text">Fake organisation</p>
-                        </div>
-                        <div class="org-row">
-                            <p id="org-text">Fake organisation</p>
-                        </div>
-
+                        {{/each}}
                     </div><!--end of #orgs-->
                 </div><!--end of #column2-->
             </div><!--end of #container-column2-->

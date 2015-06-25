@@ -1,4 +1,15 @@
 var requestGithub = require('request');
+var helpers = require('./helpers');
+var r = require('rethinkdb');
+var Handlebars = require('handlebars');
+
+r.connect( {host: 'localhost', port: 28015}, function(err, conn) {
+    if (err) {
+        throw err;
+    }
+    connection = conn;
+});
+
 var handlers = {
 
     repositories: function(request, reply){
@@ -41,7 +52,7 @@ var handlers = {
         method: "GET",
         headers: {
           'Authorization': 'token ' + request.auth.credentials.token,
-          'User-Agent': 'simonLab'
+          'User-Agent': request.auth.credentials.profile.username
         }
       };
 
@@ -50,34 +61,60 @@ var handlers = {
         method: "GET",
         headers: {
           'Authorization': 'token ' + request.auth.credentials.token,
-          'User-Agent': 'simonLab'
+          'User-Agent': request.auth.credentials.profile.username
+        }
+      };
+
+      var optsRepos = {
+        uri: 'https://api.github.com/user/repos?type=owner',
+        method: "GET",
+        headers: {
+          'Authorization': 'token ' + request.auth.credentials.token,
+          'User-Agent': request.auth.credentials.profile.username,
         }
       };
 
       requestGithub(optsUser,function(error, response, body){
         var user = JSON.parse(body);
         context.avatar = user.avatar_url;
+        context.login = user.login;
         requestGithub(optsOrgs,function(error, response, body){
           var organization = JSON.parse(body);
-          console.log(response);
           context.orgs = [];
-          // console.log(organization);
           for(var i = 0; i < organization.length; i++){
             context.orgs.push(organization[i].login);
           }
-          console.log(context);
+          requestGithub(optsRepos,function(error, response, body){
+            context.repos = [];
+            var repos = JSON.parse(body);
+            for(var y = 0; y < repos.length; y++){
+              context.repos.push(new Handlebars.SafeString('<a href ="/dashboard/' + repos[y].name + '">' + repos[y].name + '</a>'));
+              helpers.hook(user.login, repos[y].name, request.auth.credentials.token);
+            }
+            return reply.view("home", context);
+          });
         });
       });
 
       if(!request.auth.isAuthenticated){
           return reply.view('login');
       }
+  },
 
-      //
-      // var orgs = {one: 'minaorangina', two: 'plastic-cup', three: 'swift-club'};
-      reply.view("home", context);
-    }
+  create: function(request, reply){
+      var issue = JSON.parse(request.payload.payload);
+      r.table('issues').insert(issue.issue).run(connection, function(err, result){
+          if (err) {
+              throw err;
+          }
+          return;
+      });
+      reply(console.log(issue.issue.title + ' added to database'));
+  },
 
+  repo: function(request, reply){
+      reply.view('dashboard', {repo: request.params.repo});
+  }
 };
 
 module.exports = handlers;
