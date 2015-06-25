@@ -2,6 +2,7 @@ var requestGithub = require('request');
 var helpers = require('./helpers');
 var r = require('rethinkdb');
 var Handlebars = require('handlebars');
+var server = require('./server.js');
 
 r.connect( {host: 'localhost', port: 28015}, function(err, conn) {
     if (err) {
@@ -27,10 +28,6 @@ var handlers = {
     login: function(request, reply){
         request.auth.session.set(request.auth.credentials);
         return reply.redirect('/home');
-    },
-
-    issues: function(req, reply){
-        reply.file("public/templates/issues.html");
     },
 
     main: function(request, reply){
@@ -103,7 +100,7 @@ var handlers = {
 
   create: function(request, reply){
       var issue = JSON.parse(request.payload.payload);
-      r.table('issues').insert(issue.issue).run(connection, function(err, result){
+      r.table('issues').insert(issue).run(connection, function(err, result){
           if (err) {
               throw err;
           }
@@ -114,6 +111,28 @@ var handlers = {
 
   repo: function(request, reply){
       reply.view('dashboard', {repo: request.params.repo});
+  },
+
+  issue: function(request, reply){
+      var repo = request.params.repo;
+      r.table('issues').filter({repository: {name: repo}}).run(connection, function(err, cursor){
+          var iss = [];
+          if (err){
+              throw err;
+          }
+          cursor.each(function(err, row){
+              iss.push(row);
+          });
+          reply(iss);
+      });
+      r.table('issues').filter({repository: {name: repo}}).changes().run(connection, function(err, cursor) {
+          if (err) {
+              throw err;
+          }
+          cursor.each(function(err, change) {
+              server.io.emit('issue', change);
+          });
+      });
   }
 };
 

@@ -7,6 +7,9 @@ server.connection({
   port: process.env.PORT || 8000
 });
 
+var io = require('socket.io')(server.listener);
+module.exports.io = io;
+
 server.views({
 	engines: {
 		html: require('handlebars')
