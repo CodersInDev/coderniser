@@ -1,28 +1,9 @@
-/************Reset**************/
-html, body, div, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, li, form, fieldset, legend, label, table, header, footer, nav, section {
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
-ol, ul {
-    list-style: none;
-}
-
-header, footer, nav, section, article, hgroup, figure {
-    display: block;
-}
-
-legend {
-    display: none;
-}
-/************End Reset**************/
 html,body,#content{
     width:100%;
 }
 
 header {
-	position: fixed;
+	/*position: fixed;*/
 	background-color: grey;
 	width: 100%;
 	top:0;
@@ -38,19 +19,60 @@ header > p {
 	padding-top: 50px;
 }
 
-#activityLog, #priority, #calendar {
-	width: 33%;
+#activityLog, #priority, #backlog, #whatever {
+	width: 25%;
+	/*padding: 10px 0 10px 0;*/
+	margin: 0 auto;
 	display: inline-block;
+	background-color: rgba(255, 255, 255, 0.2);
+	font-family: consolas, monaco, monospace;
+	text-align: center;
+	color: #00FF00;
+	/*border: 1px red solid;*/
+	/*float:left;*/
 }
 
-#activityLog {
-	background-color: red;
+p {
+	padding: 10px 0 10px 0;
+}
+
+#whatever {
+	width: 25%;
+}
+
+#activityLog, #priority {
+	float: left;
+}
+
+#backlog, #whatever {
+	float: left;
+}
+
+#wrapper {
+	/*padding-top: 50px;*/
+	position: relative;
+	height: 100%;
+}
+
+.list {
+	display: block;
+}
+
+.inner {
+	/*padding-top: 10px;*/
+	/*margin: 5px;*/
+	background-color: yellow;
+	border: 1px red solid;
+}
+
+/*#activityLog {
+	background-color: rgba(255, 255, 255, 0.2);
 }
 
 #priority {
-	background-color: green;
+	background-color: rgba(255, 255, 255, 0.2);
 }
 
 #calendar {
-	background-color: yellow;
-}
+	background-color: rgba(255, 255, 255, 0.2);
+}*/
