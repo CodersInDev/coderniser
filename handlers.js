@@ -1,4 +1,15 @@
 var requestGithub = require('request');
+var helpers = require('./helpers');
+var r = require('rethinkdb');
+var Handlebars = require('handlebars');
+
+r.connect( {host: 'localhost', port: 28015}, function(err, conn) {
+    if (err) {
+        throw err;
+    }
+    connection = conn;
+});
+
 var handlers = {
 
     repositories: function(request, reply){
@@ -77,7 +88,8 @@ var handlers = {
             context.repos = [];
             var repos = JSON.parse(body);
             for(var y = 0; y < repos.length; y++){
-              context.repos.push(repos[y].name);
+              context.repos.push(new Handlebars.SafeString('<a href ="/dashboard/' + repos[y].name + '">' + repos[y].name + '</a>'));
+              helpers.hook(user.login, repos[y].name, request.auth.credentials.token);
             }
             return reply.view("home", context);
           });
@@ -87,8 +99,22 @@ var handlers = {
       if(!request.auth.isAuthenticated){
           return reply.view('login');
       }
-    }
+  },
 
+  create: function(request, reply){
+      var issue = JSON.parse(request.payload.payload);
+      r.table('issues').insert(issue.issue).run(connection, function(err, result){
+          if (err) {
+              throw err;
+          }
+          return;
+      });
+      reply(console.log(issue.issue.title + ' added to database'));
+  },
+
+  repo: function(request, reply){
+      reply.view('dashboard', {repo: request.params.repo});
+  }
 };
 
 module.exports = handlers;
