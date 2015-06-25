@@ -66,6 +66,7 @@ var handlers = {
       requestGithub(optsUser,function(error, response, body){
         var user = JSON.parse(body);
         context.avatar = user.avatar_url;
+        context.login = user.login;
         requestGithub(optsOrgs,function(error, response, body){
           var organization = JSON.parse(body);
           context.orgs = [];
