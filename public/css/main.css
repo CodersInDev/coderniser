@@ -1,0 +1,45 @@
+body{
+  font-family: 'Lato', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+#navbar {
+    height: 10%;
+    background-color: #87F1FF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: right;
+    width: 100%;
+}
+
+#navbar > p {
+}
+
+#column1, #column2{
+    background-color: #F2FEFF;
+    float: left;
+    font-size: 18px;
+    height: 100vh;
+    margin-top: 0%
+}
+#column1{
+    width: 33%;
+    text-align: center;
+}
+
+#user-avatar {
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+#user {
+    font-size: 36px;
+    color: #A6A6A6;
+}
+
+#column2{
+    border-left: 1px solid;
+    width: 66%;
+}
