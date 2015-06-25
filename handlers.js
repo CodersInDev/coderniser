@@ -34,8 +34,10 @@ var handlers = {
     },
 
     home: function(request, reply){
-      var opts = {
-        uri: 'https://api.github.com/user/repos',
+      var context = {};
+      //get info user
+      var optsUser = {
+        uri: 'https://api.github.com/user',
         method: "GET",
         headers: {
           'Authorization': 'token ' + request.auth.credentials.token,
@@ -43,19 +45,37 @@ var handlers = {
         }
       };
 
-      requestGithub(opts,function(error, response, body){
+      var optsOrgs = {
+        uri: 'https://api.github.com/user/orgs',
+        method: "GET",
+        headers: {
+          'Authorization': 'token ' + request.auth.credentials.token,
+          'User-Agent': 'simonLab'
+        }
+      };
+
+      requestGithub(optsUser,function(error, response, body){
         var user = JSON.parse(body);
-        var context = {avatar: user.avatar_url};
-        console.log(body);
-         return reply.view("home", context);
+        context.avatar = user.avatar_url;
+        requestGithub(optsOrgs,function(error, response, body){
+          var organization = JSON.parse(body);
+          console.log(response);
+          context.orgs = [];
+          // console.log(organization);
+          for(var i = 0; i < organization.length; i++){
+            context.orgs.push(organization[i].login);
+          }
+          console.log(context);
+        });
       });
 
       if(!request.auth.isAuthenticated){
           return reply.view('login');
       }
+
       //
       // var orgs = {one: 'minaorangina', two: 'plastic-cup', three: 'swift-club'};
-      // reply.view("home", orgs);
+      reply.view("home", context);
     }
 
 };
