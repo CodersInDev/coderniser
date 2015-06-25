@@ -36,10 +36,10 @@ body {
         linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
     height:100%;
     background-size:50px 50px;
-    position: absolute;
+    /*position: absolute;*/
     width: 100%;
-    top: 0;
-    left: 0;
+    /*top: 0;*/
+    /*left: 0;*/
 }
 
 .container {
