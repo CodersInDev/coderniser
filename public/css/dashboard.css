@@ -54,7 +54,7 @@ header > p {
     background-color: #EDF8FA;
     background-color: #DCF3F7;
     /*background-color: #87E1FF;*/
-    border-right: 5px solid white;
+    border-right: 8px solid white;
 
     display: inline-block;
     font-size: 24px;
@@ -69,9 +69,9 @@ header > p {
 
 #column1{
     float:left;
-    border-left: 5px solid white;
+    border-left: 8px solid white;
 }
 
 #column3, #column4{
-    float:right;
+    float:left;
 }
