@@ -1,4 +1,4 @@
-var github = require('./github.js');
+var Request = require('request');
 var handlers = {
     repositories: function(request, reply){
     //get the list of repositories for an organisation
@@ -12,10 +12,6 @@ var handlers = {
     	reply.view("dashboard", context);
     },
     login: function(request, reply){
-        github.authenticate({
-            type: "oauth",
-            token: request.auth.credentials.token
-        });
 
         console.log(request.auth.credentials);
         request.auth.session.set(request.auth.credentials);
@@ -34,16 +30,31 @@ var handlers = {
         return reply.redirect("/home");
     },
     repos: function(request, reply){
-        var person = request.auth.credentials.profile.username;
-        reply.view("public/templates/repos.html", person);
+        reply.view('repos');
     },
     home: function(request, reply){
-        // var github = require('github');
+        if(!request.auth.isAuthenticated){
+            return reply.view('login');
+        }
 
-        var msg = {};
-        github.repos.getAll(msg, function(err, data){
-            console.log(data);
+
+        var options = {
+            url: "https://api.github.com/user/repos",
+            headers: {
+                'User-Agent' : 'request',
+                'Authorisation' : 'token ' + process.env.APIKEY
+            }
+        };
+
+        Request(options, function(error, response, body){
+            if (error){
+                console.log("ERROR");
+                console.log(error);
+            }
+            console.log("BODY");
+            console.log(body);
         });
+
         var orgs = {one: 'minaorangina', two: 'plastic-cup', three: 'swift-club'};
 
         reply.view("home", orgs);
