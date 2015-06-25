@@ -3,13 +3,26 @@
     <head>
         <meta charset="utf-8">
         <title>Home</title>
+        <link rel="stylesheet" href="public/css/main.css">
+        <link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <h1>Home</h1>
-        <div id='orgs'>
-            {{one}}
-            {{two}}
-            {{three}}
+        <div id='navbar'></div>
+        <div id='container'>
+            <div id='column1'>
+                <div id="user-avatar">
+                    <img src={{avatar}} alt="mina's avatar" height="300px" width="auto" />
+                    <p id='user'>{{login}}
+                </div>
+            </div>
+
+            <div id='column2'>
+              {{#each repos}}
+                {{this}}</br>
+              {{/each}}
+            </div>
         </div>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="public/js/repos.js" type="text/javascript"></script>
     </body>
 </html>

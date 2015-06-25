@@ -3,6 +3,7 @@ var server = new Hapi.Server();
 var Handlebars = require('handlebars');
 var routes = require ('./routes.js');
 
+
 server.connection({
   port: process.env.PORT || 8000
 });
@@ -18,7 +19,8 @@ server.register(require('hapi-auth-cookie'), function (err) {
     server.auth.strategy('session', 'cookie', {
         password: 'password',
         cookie: 'sid-example',
-        isSecure: false
+        isSecure: false,
+        redirectTo: '/'
     });
 });
 
@@ -29,6 +31,7 @@ server.register(require('bell'), function(err){
         clientId: process.env.APPID,
         clientSecret: process.env.APPSECRET,
         isSecure: false,
+        scope: ['write', 'read:org', 'user', 'admin:org', 'write:org', 'repo', 'public_repo'],
         providerParams: {
             redirect_uri: server.info.uri + '/login'
         }

@@ -4,10 +4,10 @@ var routes = [
         method: 'GET',
         path: '/',
         config: {
-            auth: {
-             mode: 'try',
-             strategy: 'session'
-            },
+            // auth: {
+            //  mode: 'try',
+            //  strategy: 'session'
+            // },
         handler: handlers.main
      }
     },

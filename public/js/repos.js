@@ -11,6 +11,7 @@ function getUserOrgs(){
 
 $('#button').click(function getRepos(){
 	$.getJSON("https://api.github.com/users/minaorangina/repos", function(data){
+		console.log(data);
 		$('#repos').append("<h1>Your repos</h1>");
 		for (var i = data.length - 1; i >= 0; i -= 1) {
 			$("#repos").append("<li id=" + i + ">" + data[i].full_name + "</li>");
