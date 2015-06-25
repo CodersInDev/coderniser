@@ -1,0 +1,149 @@
+/************Reset**************/
+html, body, div, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, li, form, fieldset, legend, label, table, header, footer, nav, section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+ol, ul {
+    list-style: none;
+}
+header, footer, nav, section, article, hgroup, figure {
+    display: block;
+}
+legend {
+    display: none;
+}
+
+/************End Reset**************/
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #434343;
+    background-image:linear-gradient(#434343, #282828);
+}
+
+#content{
+    background-color: transparent;
+    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+    height:100%;
+    background-size:50px 50px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+}
+.section{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#front_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+h2 {
+    font-family: consolas, monaco, monospace;
+    font-size: 2.4em;
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-rendering: optimizeLegibility;
+    color: rgba(255, 255, 255, 0.81);
+}
+
+.dollar {
+    color: rgb(219, 149, 21);
+}
+
+.title {
+   color: #00ff00;
+}
+
+h3 {
+    font-family: consolas, monaco, monospace;
+    font-size: 1.9em;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 10px;
+    text-rendering: optimizeLegibility;
+
+}
+h3 > a {
+    color: rgb(219, 149, 21);
+    text-decoration: none;
+}
+
+p {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+    color: lime;
+    font-family: consolas, monaco, monospace;
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-animation: type 10s steps(60, end);
+    -moz-animation: type 10s steps(60, end);
+    animation: type 10s steps(60, end);
+}
+
+.blinker {
+    -webkit-animation: 1s blink infinite;
+    -moz-animation: 1s blink infinite;
+    animation: blink 1s infinite;
+}
+
+@-webkit-keyframes blink {
+    to{opacity: .0;}
+}
+
+@-moz-keyframes blink {
+     to{opacity: .0;}
+ }
+
+@keyframes blink{
+    to{opacity: .0;}
+}
+
+@-webkit-keyframes type{
+    from { width: 0; }
+}
+
+@-moz-keyframes type{
+    from { width: 0; }
+}
+
+@keyframes type{
+    from { width: 0; }
+}
+
+
+
+
+
+
