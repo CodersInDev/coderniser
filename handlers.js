@@ -1,8 +1,21 @@
+var requestGithub = require('request');
+var helpers = require('./helpers');
+var r = require('rethinkdb');
+var Handlebars = require('handlebars');
+
+r.connect( {host: 'localhost', port: 28015}, function(err, conn) {
+    if (err) {
+        throw err;
+    }
+    connection = conn;
+});
+
 var handlers = {
+
     repositories: function(request, reply){
-    //get the list of repositories for an organisation
         reply("list of repository");
     },
+
     dashboard: function(request, reply) {
     	//some context message for now
     	var context = {
@@ -10,34 +23,98 @@ var handlers = {
     	};
     	reply.view("dashboard", context);
     },
+
     login: function(request, reply){
-        console.log(request.auth.credentials);
         request.auth.session.set(request.auth.credentials);
         return reply.redirect('/home');
     },
+
     issues: function(req, reply){
-        console.log("routes auth", req.auth);
         reply.file("public/templates/issues.html");
     },
+
     main: function(request, reply){
-        console.log("handler auth", request.auth);
         if (!request.auth.isAuthenticated){
-            return reply.view('login'); // ****
+            return reply.view('login');
         }
-        request.auth.session.set(request.auth.credentials);
         return reply.redirect("/home");
     },
+
     repos: function(request, reply){
-        var person = request.auth.credentials.profile.username;
-        reply.view("public/templates/repos.html", person);
+        reply.view('repos');
     },
+
     home: function(request, reply){
-        // var github = require('github');
-        var orgs = {one: 'minaorangina', two: 'plastic-cup', three: 'swift-club'};
+      var context = {};
+      //get info user
+      var optsUser = {
+        uri: 'https://api.github.com/user',
+        method: "GET",
+        headers: {
+          'Authorization': 'token ' + request.auth.credentials.token,
+          'User-Agent': request.auth.credentials.profile.username
+        }
+      };
 
-        reply.view("home", orgs);
-    }
+      var optsOrgs = {
+        uri: 'https://api.github.com/user/orgs',
+        method: "GET",
+        headers: {
+          'Authorization': 'token ' + request.auth.credentials.token,
+          'User-Agent': request.auth.credentials.profile.username
+        }
+      };
 
+      var optsRepos = {
+        uri: 'https://api.github.com/user/repos?type=owner',
+        method: "GET",
+        headers: {
+          'Authorization': 'token ' + request.auth.credentials.token,
+          'User-Agent': request.auth.credentials.profile.username,
+        }
+      };
+
+      requestGithub(optsUser,function(error, response, body){
+        var user = JSON.parse(body);
+        context.avatar = user.avatar_url;
+        context.login = user.login;
+        requestGithub(optsOrgs,function(error, response, body){
+          var organization = JSON.parse(body);
+          context.orgs = [];
+          for(var i = 0; i < organization.length; i++){
+            context.orgs.push(organization[i].login);
+          }
+          requestGithub(optsRepos,function(error, response, body){
+            context.repos = [];
+            var repos = JSON.parse(body);
+            for(var y = 0; y < repos.length; y++){
+              context.repos.push(new Handlebars.SafeString('<a href ="/dashboard/' + repos[y].name + '">' + repos[y].name + '</a>'));
+              helpers.hook(user.login, repos[y].name, request.auth.credentials.token);
+            }
+            return reply.view("home", context);
+          });
+        });
+      });
+
+      if(!request.auth.isAuthenticated){
+          return reply.view('login');
+      }
+  },
+
+  create: function(request, reply){
+      var issue = JSON.parse(request.payload.payload);
+      r.table('issues').insert(issue.issue).run(connection, function(err, result){
+          if (err) {
+              throw err;
+          }
+          return;
+      });
+      reply(console.log(issue.issue.title + ' added to database'));
+  },
+
+  repo: function(request, reply){
+      reply.view('dashboard', {repo: request.params.repo});
+  }
 };
 
 module.exports = handlers;

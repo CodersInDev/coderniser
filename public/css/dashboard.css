@@ -1,55 +1,56 @@
+*{
+    box-sizing: border-box;
+}
+
 html,body,#content{
     width:100%;
+    font-family: 'Muli', sans-serif;
+}
+
+#container{
+    padding-top: 50px;
+    width: 100%;
 }
 
 header {
-	/*position: fixed;*/
 	background-color: grey;
 	width: 100%;
 	top:0;
 	height: 40px;
+    position: fixed;
+    left: 0;
+    text-align: right;
 }
 
 header > p {
-	text-align: right;
+	text-align: left;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-#content {
-	/*margin: 0 auto;*/
-	padding-top: 50px;
-}
 
-#activityLog, #priority, #backlog, #whatever {
+
+
+#column1, #column2, #column3, #column4 {
 	width: 25%;
-	/*padding: 10px 0 10px 0;*/
 	margin: 0 auto;
 	display: inline-block;
 	background-color: rgba(255, 255, 255, 0.2);
 	font-family: consolas, monaco, monospace;
 	text-align: center;
 	color: #00FF00;
-	/*border: 1px red solid;*/
-	/*float:left;*/
+	float:left;
+	border-right: 8px solid white;
+	margin-top: 40px;
 }
 
 p {
 	padding: 10px 0 10px 0;
 }
 
-#whatever {
-	width: 25%;
-}
 
-#activityLog, #priority {
-	float: left;
-}
-
-#backlog, #whatever {
-	float: left;
-}
 
 #wrapper {
-	/*padding-top: 50px;*/
 	position: relative;
 	height: 100%;
 }
@@ -59,20 +60,12 @@ p {
 }
 
 .inner {
-	/*padding-top: 10px;*/
-	/*margin: 5px;*/
 	background-color: yellow;
 	border: 1px red solid;
 }
 
-/*#activityLog {
-	background-color: rgba(255, 255, 255, 0.2);
+
+#column1{
+    border-left: 8px solid white;
 }
 
-#priority {
-	background-color: rgba(255, 255, 255, 0.2);
-}
-
-#calendar {
-	background-color: rgba(255, 255, 255, 0.2);
-}*/

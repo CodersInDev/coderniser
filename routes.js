@@ -4,10 +4,10 @@ var routes = [
         method: 'GET',
         path: '/',
         config: {
-            auth: {
-             mode: 'try',
-             strategy: 'session'
-            },
+            // auth: {
+            //  mode: 'try',
+            //  strategy: 'session'
+            // },
         handler: handlers.main
      }
     },
@@ -53,8 +53,19 @@ var routes = [
                 path: './public'
             }
         }
-    }
+    },
 
+    {
+        method: 'POST',
+        path: '/create',
+        handler: handlers.create
+    },
+
+    {
+        method: 'GET',
+        path: '/dashboard/{repo}',
+        handler: handlers.repo
+    },
 ];
 
 module.exports = routes;

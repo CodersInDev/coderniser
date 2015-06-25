@@ -79,9 +79,9 @@ h2 {
     color: rgb(219, 149, 21);
 }
 
-.title {
+/*.title {
    color: #00ff00;
-}
+}*/
 
 h3 {
     font-family: consolas, monaco, monospace;
@@ -96,6 +96,10 @@ h3 {
 h3 > a {
     color: rgb(219, 149, 21);
     text-decoration: none;
+}
+
+h3 > a:hover {
+    color: lime;
 }
 
 #typing{
@@ -145,9 +149,7 @@ h3 > a {
     from { width: 0; }
 }
 
-p {
-    display: inline-block;
-}
+
 
 
 
