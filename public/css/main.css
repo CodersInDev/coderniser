@@ -5,7 +5,7 @@ body{
   color: #993996;
 }
 
-#navbar {
+header {
     height: 50px;
     background-color: #87F1FF;
     background-color: #88EAF7;
@@ -19,7 +19,7 @@ body{
     width: 100%;
 }
 
-#navbar > p {
+header > p {
 }
 
 #container-column2{
