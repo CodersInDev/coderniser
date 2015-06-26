@@ -86,15 +86,14 @@ var handlers = {
             context.repos = [];
             var repos = JSON.parse(body);
             for(var y = 0; y < repos.length; y++){
-              context.repos.push(new Handlebars.SafeString('<a href ="/dashboard/' + repos[y].name + '">' + repos[y].name + '</a>'));
+              context.repos.push(new Handlebars.SafeString(repos[y].name));
               helpers.hook(user.login, repos[y].name, request.auth.credentials.token);
             }
             requestGithub(optsIssues, function(error, response, body){
-
               context.issues = [];
               var issues = JSON.parse(body);
               for(var z = 0; z < issues.length; z++){
-                context.issues.push(issues[z].title);
+                context.issues.push({title: issues[z].title, repo: issues[z].repository.name});
               }
               return reply.view("home", context);
             });

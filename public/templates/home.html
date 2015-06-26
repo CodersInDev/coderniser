@@ -15,14 +15,14 @@
           <h1 >Your repositories</h1>
           <div>
             {{#each repos}}
-                <p>{{this}}</p>
+              <p><a href ="/dashboard/{{this}}">{{this}}</a></p>
             {{/each}}
           </div>
 
         <h1 >Your issues</h1>
         <div>
           {{#each issues}}
-              <p>{{this}}</p>
+            <p><a href ="/dashboard/{{this.repo}}">{{this.title}}</a></p>
           {{/each}}
         </div>
 
