@@ -4,7 +4,7 @@ var r = require('rethinkdb');
 var Handlebars = require('handlebars');
 var server = require('./server.js');
 
-r.connect( {host: 'ssh445.aws-us-east-1-portal.5.dblayer.com', port: 28015}, function(err, conn) {
+r.connect( {host: 'ssh445.aws-us-east-1-portal.5.dblayer.com', port: 28015, timeout: 9999}, function(err, conn) {
     if (err) {
         console.log('ERROR');
         throw err;
