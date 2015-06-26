@@ -4,7 +4,7 @@ var lastPosition;
 $(function() {
 
     var socket = io();
-    document.onload = start();
+
 
     function start(){
         var repo = window.location.href.split('/');
@@ -12,22 +12,29 @@ $(function() {
         $.get('/issues/' + repo, function(data){
             data = JSON.parse(data);
             console.log(data);
+            var fake = {col: 1}
             for (var i = 0; i < data.length; i++){
 
-                // DO MAGIC HERE
+                gridster.add_widget(
+                        "<div id='" + i + "'>'" + data[i].title + "</div>",
+                        //data[i]['size_x'],
+                        //data[i]['size_y'],
+                        fake.col,
+                        i
+                    );
             }
         });
     }
 
     socket.on('issue', function(data){
         console.log('socket event');
-        $('#column1').append('<p>' + data.title + '</p>');
+        //$('#column1').append('<p>' + data.title + '</p>');
     });
 
 
     // get html from issues
 
-    gridster = $(".gridster > ul").gridster({
+    gridster = $(".gridster").gridster({
         widget_margins: [10, 10],
         widget_base_dimensions: [230, 100],
         min_cols: 4,
@@ -44,6 +51,7 @@ $(function() {
             };
         },
     }).data('gridster');
+    start();
 
     // for(i=0; i<json.length; i++) {
     //     gridster.add_widget(
@@ -58,20 +66,7 @@ $(function() {
     // var result = gridster.serialize_params;
     //console.log(gridster);
 
-    // we will get data from db and populate page
-    // check if array from db is empty??
-    // if not, populate page
-    // //ADD EXISTING ISSUES
-    // if (fromDB){
-    //     for (key in fromDB){
-    //
-    //     }
-    //     arrayFromDB.forEach(function(widget){
-    //         gridster.addWidget('<h1>YEEEEAH</h1>', lastPosition.size_x, lastPosition.size_y, lastPosition.col, lastPosition.row);
-    //     });
-    // }
-    // console.log(lastPosition);
-
+    
 
     // ADD NEW ISSUES
 
