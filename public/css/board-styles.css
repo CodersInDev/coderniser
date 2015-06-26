@@ -1,0 +1,84 @@
+body {
+    background-color: #EEEEEE;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: x-small;
+    color: #666666;
+}
+
+/*header{
+    position: fixed;
+    height: 50px;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: blue;
+    margin: 0;
+}*/
+
+ul, ol {
+    list-style: none;
+}
+
+h1 {
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 25px;
+  font-weight: 600;
+  color: white;
+}
+
+#headers{
+    /*margin: 0;*/
+    min-width: 1020px;
+}
+
+.tracker{
+    display: inline-block;
+    width: 250px;
+    text-align: center;
+}
+
+
+
+/* Gridster styles */
+.demo {
+    /*margin: 0;
+    padding: 7.5em 0 5.5em;
+    background: #004756;
+    border: none;
+    height: 100%;
+    width: 100%;*/
+    height: 100vh;
+    background: #004756;
+    text-align: center;
+}
+
+.demo:hover .gridster {
+    opacity: 1;
+}
+
+.gridster {
+    width: 940px;
+    margin: 0 auto;
+
+    opacity: .8;
+
+    -webkit-transition: opacity .6s;
+    -moz-transition: opacity .6s;
+    -o-transition: opacity .6s;
+    -ms-transition: opacity .6s;
+    transition: opacity .6s;
+}
+
+.gridster .gs_w {
+    background: #FFF;
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}

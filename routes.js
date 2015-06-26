@@ -71,7 +71,13 @@ var routes = [
         method: 'GET',
         path: '/issues/{repo}',
         handler: handlers.issue
-    }
+    },
+
+    {
+        method: 'POST',
+        path: '/board',
+        handler: handlers.board
+    },
 ];
 
 module.exports = routes;

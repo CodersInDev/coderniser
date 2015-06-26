@@ -11,3 +11,33 @@
 2015-06-25T14:59:35.317850000 1.138630s notice: Listening on addresses: 127.0.0.1, ::1
 2015-06-25T14:59:35.317870000 1.138650s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
 2015-06-25T14:59:35.317877000 1.138657s notice: Server ready, "Minas_MacBook_Pro_local_mpr" bc95d84b-aa99-4edc-a728-00240d346edc
+2015-06-26T09:26:37.991666000 0.642887s notice: Running rethinkdb 2.0.3 (CLANG 6.1.0 (clang-602.0.53))...
+2015-06-26T09:26:38.082515000 0.733730s notice: Running on Darwin 14.3.0 x86_64
+2015-06-26T09:26:38.082593000 0.733806s notice: Loading data from directory /Users/Mina/FAC/7/coderniser/rethinkdb_data
+2015-06-26T09:26:38.242476000 0.893729s info: Automatically using cache size of 6078 MB
+2015-06-26T09:26:38.243193000 0.894463s notice: Listening for intracluster connections on port 29015
+2015-06-26T09:26:38.245200000 0.896470s notice: Listening for client driver connections on port 28015
+2015-06-26T09:26:38.245314000 0.896584s notice: Listening for administrative HTTP connections on port 8080
+2015-06-26T09:26:38.245321000 0.896590s notice: Listening on addresses: 127.0.0.1, ::1
+2015-06-26T09:26:38.245327000 0.896596s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-06-26T09:26:38.245332000 0.896601s notice: Server ready, "Minas_MacBook_Pro_local_mpr" bc95d84b-aa99-4edc-a728-00240d346edc
+2015-06-26T09:29:25.728667000 168.388654s notice: Server got SIGINT from pid 212, uid 501; shutting down...
+2015-06-26T09:29:25.728813000 168.388800s notice: Shutting down client connections...
+2015-06-26T09:29:25.728999000 168.388985s notice: All client connections closed.
+2015-06-26T09:29:25.729013000 168.388999s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-06-26T09:29:25.729476000 168.389462s notice: Storage engine shut down.
+2015-06-26T09:29:46.553615000 0.548336s notice: Running rethinkdb 2.0.3 (CLANG 6.1.0 (clang-602.0.53))...
+2015-06-26T09:29:46.561041000 0.555758s notice: Running on Darwin 14.3.0 x86_64
+2015-06-26T09:29:46.561105000 0.555820s notice: Loading data from directory /Users/Mina/FAC/7/coderniser/rethinkdb_data
+2015-06-26T09:29:46.619941000 0.614656s info: Automatically using cache size of 6184 MB
+2015-06-26T09:29:46.620604000 0.615318s notice: Listening for intracluster connections on port 29015
+2015-06-26T09:29:46.622266000 0.616980s notice: Listening for client driver connections on port 28015
+2015-06-26T09:29:46.622365000 0.617080s notice: Listening for administrative HTTP connections on port 8080
+2015-06-26T09:29:46.622379000 0.617094s notice: Listening on addresses: 127.0.0.1, ::1
+2015-06-26T09:29:46.622384000 0.617099s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-06-26T09:29:46.622389000 0.617103s notice: Server ready, "Minas_MacBook_Pro_local_mpr" bc95d84b-aa99-4edc-a728-00240d346edc
+2015-06-26T09:29:53.751024000 7.746128s notice: Server got SIGINT from pid 212, uid 501; shutting down...
+2015-06-26T09:29:53.751223000 7.746326s notice: Shutting down client connections...
+2015-06-26T09:29:53.751753000 7.746856s notice: All client connections closed.
+2015-06-26T09:29:53.751852000 7.746955s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-06-26T09:29:53.752806000 7.747909s notice: Storage engine shut down.

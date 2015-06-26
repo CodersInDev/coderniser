@@ -133,6 +133,11 @@ var handlers = {
               server.io.emit('issue', change);
           });
       });
+  },
+
+  board: function(request, reply){
+      // PUT POSITIONS ARRAY IN DB
+      console.log(request.params);
   }
 };
 
