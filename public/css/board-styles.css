@@ -1,6 +1,7 @@
 body {
     background-color: #EEEEEE;
     font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: consolas, monaco, monospace;
     -webkit-font-smoothing: antialiased;
     font-size: x-small;
     color: #666666;
@@ -25,6 +26,8 @@ h1 {
   text-align: center;
   font-size: 30px;
   font-weight: 400;
+  font-family: consolas, monaco, monospace;
+  color: lime;
 }
 
 h3 {
@@ -40,7 +43,8 @@ h3 {
 
 .tracker{
     display: inline-block;
-    width: 250px;
+    /*float: left;*/
+    width: 23%;
     text-align: center;
 }
 
@@ -85,9 +89,29 @@ h3 {
 
 .card{
     font-size: 14px;
+    overflow: auto;
 
 }
 .card > img{
-    height: 20px;
-    width: 20px;
+    height: 14px;
+    width: 14px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #434343;
+    background-image:linear-gradient(#434343, #282828);
+    /*background-color: transparent;*/
+    /*background-color: rgba(29, 17, 17, 0.5);*/
+    background-image:
+        linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+    height:100%;
+    background-size:50px 50px;
+    /*position: absolute;*/
+    width: 100%;
+    /*top: 0;*/
+    /*left: 0;*/
 }

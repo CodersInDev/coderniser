@@ -15,7 +15,11 @@ $(function() {
             for (var i = 0; i < data.length; i++){
 
                 gridster.add_widget(
-                    '<div class="card"> #' + data[i].number + '<br><strong>Issue: </strong>' + data[i].title + '<br>' + data[i].body + '<br><br><img src=' + data[i].user.avatar_url + '/>'+ data[i].user.login +'</div>',
+                    '<div class="card"><br><strong>Issue #'+ data[i].number +': </strong>' + data[i].title +
+                    ' <br><strong>Raised by: </strong><img src=' +
+                    data[i].user.avatar_url + '/> '+ 
+                    data[i].user.login + '<br><br>' +
+                    data[i].body + '<br>' +'</div>',
                     1,
                     1,
                     1,
