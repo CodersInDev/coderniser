@@ -34,9 +34,9 @@ server.register(require('./bell'), function(err){
         clientSecret: process.env.APPSECRET,
         isSecure: false,
         scope: ['write', 'read:org', 'user', 'admin:org', 'write:org', 'repo', 'public_repo', 'read:repo_hook', 'write:repo_hook'],
-        providerParams: {
-            redirect_uri: server.info.uri + '/login'
-        }
+        // providerParams: {
+        //     redirect_uri: server.info.uri + '/login'
+        // }
     });
 });
 
