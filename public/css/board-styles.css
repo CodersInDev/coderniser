@@ -1,0 +1,118 @@
+body {
+    background-color: #EEEEEE;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: consolas, monaco, monospace;
+    -webkit-font-smoothing: antialiased;
+    font-size: x-small;
+    color: #666666;
+}
+
+/*header{
+    position: fixed;
+    height: 50px;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: blue;
+    margin: 0;
+}*/
+
+ul, ol {
+    list-style: none;
+}
+
+h1 {
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 400;
+  font-family: consolas, monaco, monospace;
+  color: lime;
+}
+
+h3 {
+  font-size: 25px;
+  font-weight: 600;
+  color: white;
+}
+
+#headers{
+    /*margin: 0;*/
+    min-width: 1020px;
+}
+
+.tracker{
+    display: inline-block;
+    /*float: left;*/
+    width: 24%;
+    text-align: left;
+}
+
+
+
+/* Gridster styles */
+.demo {
+    /*margin: 0;
+    padding: 7.5em 0 5.5em;
+    background: #004756;
+    border: none;
+    height: 100%;
+    width: 100%;*/
+    height: 100vh;
+    background: #004756;
+    text-align: left;
+}
+
+.demo:hover .gridster {
+    opacity: 1;
+}
+
+.gridster {
+    width: 100%;
+    margin: 0 auto;
+
+    opacity: .8;
+
+    -webkit-transition: opacity .6s;
+    -moz-transition: opacity .6s;
+    -o-transition: opacity .6s;
+    -ms-transition: opacity .6s;
+    transition: opacity .6s;
+}
+
+.gridster .gs_w {
+    background: #FFF;
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.card{
+    font-size: 14px;
+    overflow: auto;
+
+}
+.card > img{
+    height: 14px;
+    width: 14px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #434343;
+    background-image:linear-gradient(#434343, #282828);
+    /*background-color: transparent;*/
+    /*background-color: rgba(29, 17, 17, 0.5);*/
+    background-image:
+        linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+    height:100%;
+    background-size:50px 50px;
+    /*position: absolute;*/
+    width: 100%;
+    /*top: 0;*/
+    /*left: 0;*/
+    padding-left: 40px;
+}

@@ -1,15 +1,8 @@
 var requestGithub = require('request');
 var helpers = require('./helpers');
-var r = require('rethinkdb');
 var Handlebars = require('handlebars');
 var server = require('./server.js');
-
-r.connect( {host: 'localhost', port: 28015}, function(err, conn) {
-    if (err) {
-        throw err;
-    }
-    connection = conn;
-});
+var fs = require('fs');
 
 var handlers = {
 
@@ -37,9 +30,6 @@ var handlers = {
         return reply.redirect("/home");
     },
 
-    repos: function(request, reply){
-        reply.view('repos');
-    },
 
     home: function(request, reply){
       var context = {};
@@ -100,39 +90,60 @@ var handlers = {
 
   create: function(request, reply){
       var issue = JSON.parse(request.payload.payload);
-      r.table('issues').insert(issue).run(connection, function(err, result){
-          if (err) {
-              throw err;
-          }
-          return;
-      });
-      reply(console.log(issue.issue.title + ' added to database'));
+      socket.emit('issues', issue);
   },
 
   repo: function(request, reply){
       reply.view('dashboard', {repo: request.params.repo});
   },
 
+  // repos: function(request, reply){
+  //     reply.view('repos');
+  // },
+
   issue: function(request, reply){
       var repo = request.params.repo;
-      r.table('issues').filter({repository: {name: repo}}).run(connection, function(err, cursor){
-          var iss = [];
-          if (err){
-              throw err;
+      var optIss = {
+          uri: 'https://api.github.com/repos/' + request.auth.credentials.profile.username + '/' + repo + '/issues',
+          method: 'GET',
+          headers: {
+            'Authorization': 'token ' + request.auth.credentials.token,
+            'User-Agent': request.auth.credentials.profile.username,
           }
-          cursor.each(function(err, row){
-              iss.push(row);
-          });
-          reply(iss);
+      };
+      requestGithub(optIss, function(error, response, body){
+          reply(body);
       });
-      r.table('issues').filter({repository: {name: repo}}).changes().run(connection, function(err, cursor) {
-          if (err) {
-              throw err;
-          }
-          cursor.each(function(err, change) {
-              server.io.emit('issue', change);
-          });
-      });
+  },
+
+
+  fetchBoard: function(request, reply){
+      // get board positions from db
+      // or
+      // get text from new, unpopulated issues and generate new cards
+      //obj {old cards: json of old cards,
+      //        new issues: text of new issues}
+      //
+    //   fs.readFile('fakedb.js', function(err, data){
+    //       if (err){
+    //           console.log(err);
+    //       }
+    //       console.log(data.toString());
+    //   });
+    var repo = request.params.repo;
+    var optIss = {
+        uri: 'https://api.github.com/repos/' + request.auth.credentials.profile.username + '/' + repo + '/issues',
+        method: 'GET',
+        headers: {
+          'Authorization': 'token ' + request.auth.credentials.token,
+          'User-Agent': request.auth.credentials.profile.username,
+        }
+    };
+    requestGithub(optIss, function(error, response, body){
+        reply(body);
+    });
+
+      reply.view('dashboard');
   }
 };
 
