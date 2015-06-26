@@ -12,7 +12,7 @@ var helpers = {
              json: {
                  name: 'web',
                  config: {
-                     url: 'https://frozen-taiga-7541.herokuapp.com/create'
+                     url: 'http://34d4a35d.ngrok.io/create'
                  },
                  events: ['issues']
              }},

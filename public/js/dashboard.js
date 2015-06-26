@@ -13,5 +13,6 @@ function start(){
 }
 
 socket.on('issue', function(data){
+    console.log('socket event');
     $('#column1').append('<p>' + data.new_val.issue.title + '</p>');
 });
