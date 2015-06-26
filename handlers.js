@@ -63,6 +63,15 @@ var handlers = {
         }
       };
 
+      var optsIssues = {
+        uri: 'https://api.github.com/issues',
+        method: "GET",
+        headers: {
+          'Authorization': 'token ' + request.auth.credentials.token,
+          'User-Agent': request.auth.credentials.profile.username,
+        }
+      };
+
       requestGithub(optsUser,function(error, response, body){
         var user = JSON.parse(body);
         context.avatar = user.avatar_url;
@@ -80,7 +89,15 @@ var handlers = {
               context.repos.push(new Handlebars.SafeString('<a href ="/dashboard/' + repos[y].name + '">' + repos[y].name + '</a>'));
               helpers.hook(user.login, repos[y].name, request.auth.credentials.token);
             }
-            return reply.view("home", context);
+            requestGithub(optsIssues, function(error, response, body){
+
+              context.issues = [];
+              var issues = JSON.parse(body);
+              for(var z = 0; z < issues.length; z++){
+                context.issues.push(issues[z].title);
+              }
+              return reply.view("home", context);
+            });
           });
         });
       });
