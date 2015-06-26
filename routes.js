@@ -35,8 +35,14 @@ var routes = [
 
     {
         path: '/repos',
-        method: 'GET',
-        handler: handlers.repos
+        method: 'POST',
+        config: {
+            auth:{
+                mode: 'try',
+                strategy: 'session'
+            },
+            handler: handlers.repos
+        }
     },
 
     {
@@ -76,6 +82,18 @@ var routes = [
                 strategy: 'session'
             },
             handler: handlers.issue
+        }
+    },
+
+    {
+        method: 'POST',
+        path: '/user',
+        config: {
+            auth:{
+                mode: 'try',
+                strategy: 'session'
+            },
+            handler: handlers.user
         }
     }
 ];

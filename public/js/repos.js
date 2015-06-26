@@ -1,5 +1,26 @@
-// get all issues assigned to the authenticated user (access_token)
+$('#dropdown').change(function(e){
+	//call the endpoint /repos
+	//console.log(getRepos($(this).val(),));
+	if($(this).val() === $('#user').html()){
+		$.post("/user",{user: $(this).val()}, function(data){
+			$('#repos').html('');
+			data.forEach(function(repo){
+				$('#repos').append("<p><a href =/dashboard/"+repo.name+">"+ repo.name +"</p>");
+			});
+		});
+	}else{
+	$.post("/repos",{org: $(this).val()}, function(data){
+		$('#repos').html('');
+		data.forEach(function(repo){
+			$('#repos').append("<p><a href =/dashboard/"+repo.name+">"+ repo.name +"</p>");
+		});
+	});
+  }
+});
 
+
+
+// get all issues assigned to the authenticated user (access_token)
 function getUserOrgs(){
 	$.getJSON("https://api.github.com/user/memberships/orgs/", function(data){
 		console.log(data);

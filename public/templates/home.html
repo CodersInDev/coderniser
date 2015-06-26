@@ -10,10 +10,15 @@
         <div id='container'>
 
           <img src={{avatar}} alt="mina's avatar" height="300px" width="auto" />
-          <p id='user'>{{login}}</div>
+          <select id='dropdown'>
+            <option id='user' value={{login}}>{{login}}</option>
+            {{#each orgs}}
+              <option value={{this}}>{{this}}</option>
+            {{/each}}
+          </select>
 
-          <h1 >Your repositories</h1>
-          <div>
+          <h1>Your repositories</h1>
+          <div id='repos'>
             {{#each repos}}
               <p><a href ="/dashboard/{{this}}">{{this}}</a></p>
             {{/each}}

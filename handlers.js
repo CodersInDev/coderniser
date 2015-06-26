@@ -30,7 +30,20 @@ var handlers = {
     },
 
     repos: function(request, reply){
-        reply.view('repos');
+      console.log("repos handler");
+      console.log(request.auth);
+      var optsRepos = {
+        uri: 'https://api.github.com/orgs/'+request.payload.org+'/repos',
+        method: "GET",
+        headers: {
+          'Authorization': 'token ' + request.auth.credentials.token,
+          'User-Agent': request.auth.credentials.profile.username
+        }
+      };
+
+      requestGithub(optsRepos, function(error, response, body){
+        return reply(JSON.parse(body));
+      });
     },
 
     home: function(request, reply){
@@ -128,6 +141,22 @@ var handlers = {
       requestGithub(optIss, function(error, response, body){
           reply(body);
       });
+  },
+
+  user: function(request, reply){
+    var optsRepos = {
+      uri: 'https://api.github.com/user/repos?type=owner',
+      method: "GET",
+      headers: {
+        'Authorization': 'token ' + request.auth.credentials.token,
+        'User-Agent': request.auth.credentials.profile.username,
+      }
+    };
+
+    requestGithub(optsRepos, function(error, response, body){
+      return reply(JSON.parse(body));
+    });
+
   }
 };
 
