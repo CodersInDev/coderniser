@@ -1,24 +1,14 @@
 body{
-  font-family: 'Muli', sans-serif;
+  font-family: consolas, monaco, monospace;
   padding: 0;
   margin: 0;
-  color: #B50D8B;
-}
-
-#navbar {
-    height: 50px;
-    background-color: #87F1FF;
-    background-color: #88EAF7;
-    background-color: #4DD2FF;
-    background-color: #4FA9FF;
-    position: fixed;
-    top: 0;
-    left: 0;
-    text-align: right;
-    width: 100%;
-}
-
-#navbar > p {
+  color: rgb(219, 149, 21);
+  background-color: #434343;
+  background-image: linear-gradient(#434343, #282828);
+  background-image:
+      linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent),
+      linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+  background-size:50px 50px;
 }
 
 #container-column2{
@@ -26,13 +16,11 @@ body{
 }
 
 #column1, #column2{
-    background-color: #EDF8FA;
-    background-color: #DCF3F7;
     /*background-color: #87E1FF;*/
     float: left;
     font-size: 18px;
     height: 100vh;
-    margin-top: 50px;
+    /*margin-top: 50px;*/
 }
 #column1{
     width: 33%;
@@ -62,8 +50,8 @@ body{
     margin-top: 50px;
     text-align: center;
     font-size: 70px;
-    color: #ffffff;
-    text-shadow: 4px 4px 2px #85C3FF;
+    color: rgba(0,255,0,0.8);
+    /*text-shadow: 4px 4px 2px #85C3FF;*/
     /*font-style: italic;*/
 }
 
@@ -72,6 +60,8 @@ body{
     margin: 0 auto;
     /*margin-top: 50px;*/
     background-color: #9CCEFF;
+    height: 70%;
+    overflow: auto;
 }
  .org-row{
      height: 50px;
