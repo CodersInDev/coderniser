@@ -4,10 +4,6 @@ var routes = [
         method: 'GET',
         path: '/',
         config: {
-            // auth: {
-            //  mode: 'try',
-            //  strategy: 'session'
-            // },
         handler: handlers.main
      }
     },
@@ -33,11 +29,11 @@ var routes = [
         }
     },
 
-    {
-        path: '/repos',
-        method: 'GET',
-        handler: handlers.repos
-    },
+    // {
+    //     path: '/repos',
+    //     method: 'GET',
+    //     handler: handlers.repos
+    // },
 
     {
     	path: '/dashboard',
@@ -80,15 +76,15 @@ var routes = [
     },
 
     {
-        method: 'POST',
-        path: '/board',
-        handler: handlers.board
-    },
-
-    {
         method: 'GET',
-        path: '/board',
-        handler: handlers.fetchBoard
+        path: '/fetchBoard',
+        config: {
+            auth:{
+                mode: 'try',
+                strategy: 'session'
+            },
+            handler: handlers.fetchBoard
+        }
     }
 ];
 

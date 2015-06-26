@@ -1,77 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="/public/css/login.css">
-    <link rel="stylesheet" href="/public/css/dashboard.css">
-    <link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
-</head>
-<body>
-	<header>
-		<p id="repo">{{repo}}</p>
-	</header>
-	<div id="content">
-		<div id="wrapper">
-			<div id="column1">
-				<p>Activity Log</p>
-				<div class="inner"></div>
-			</div>
+  <head>
+      <title>gridster test</title>
+      <meta name="author" content="gyurisc">
+      <link rel="stylesheet" type="text/css" href="../public/css/jquery.gridster.css">
+      <link rel="stylesheet" type="text/css" href="../public/css/jquery.gridster.min.css">
 
-			<div id="column2">
-				<p>Priority</p>
-				<div class="inner">
-					<h1>title</h1>
-					<p>body</p>
-				</div>
-				<div class="inner">
-					<h1>title</h1>
-					<p>body</p>
-				</div>
-				<div class="inner">
-					<h1>title</h1>
-					<p>body</p>
-				</div>
-				<div class="inner">
-					<h1>title</h1>
-					<p>body</p>
-				</div>
-				<div class="inner">
-					<h1>title</h1>
-					<p>body</p>
-				</div>
-				<div class="inner">
-					<h1>title</h1>
-					<p>body</p>
-				</div>
-				<div class="inner">
-					<h1>title</h1>
-					<p>body</p>
-				</div>
-				<div class="inner">
-					<h1>title</h1>
-					<p>body</p>
-				</div>
-				<div class="inner">
-					<h1>title</h1>
-					<p>body</p>
-				</div>
-			</div>
+      <link rel="stylesheet" type="text/css" href="../public/css/board-styles.css">
+  </head>
+  <body>
+      <!-- <section class="demo"> -->
+          <div id='headers'>
+              <h1 class='tracker' id='later'>Later</h1>
+              <h1 class='tracker'>Soon</h1>
+              <h1 class='tracker'>Now</h1>
+              <h1 class='tracker'>Done</h1>
+          </div>
+          <div class="gridster">
+              <ul>
+                  <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"><h1>one</h1></li>
+                  <li data-row="2" data-col="1" data-sizex="1" data-sizey="1"><h1>one</h1></li>
+                  <li data-row="3" data-col="1" data-sizex="1" data-sizey="1"><h1>one</h1></li>
+                  <li data-row="4" data-col="1" data-sizex="1" data-sizey="1"><h1>one</h1></li>
+                  <li data-row="5" data-col="1" data-sizex="1" data-sizey="1"><h1>one</h1></li>
+                  <li data-row="6" data-col="1" data-sizex="1" data-sizey="1"><h1>one</h1></li>
+                  <li data-row="7" data-col="1" data-sizex="1" data-sizey="1"><h1>one</h1></li>
+                  <li data-row="8" data-col="1" data-sizex="1" data-sizey="1"><h1>one</h1></li>
 
-			<div id="column3">
-				<p>Backlog</p>
-				<div class="inner"></div>
-			</div>
+                  <!-- <li data-row="1" data-col="2" data-sizex="1" data-sizey="1"><h1>two</h1></li>
+                  <li data-row="2" data-col="2" data-sizex="1" data-sizey="1"><h1>two</h1></li>
+                  <li data-row="3" data-col="2" data-sizex="1" data-sizey="1"><h1>two</h1></li>
+                  <li data-row="4" data-col="2" data-sizex="1" data-sizey="1"><h1>two</h1></li>
 
-			<div id="column4">
-				<p>Whatever</p>
-				<div class="inner"></div>
-			</div>
+                  <li data-row="1" data-col="3" data-sizex="1" data-sizey="1"><h1>three</h1></li>
+                  <li data-row="2" data-col="3" data-sizex="1" data-sizey="1"><h1>three</h1></li>
+                  <li data-row="3" data-col="3" data-sizex="1" data-sizey="1"><h1>three</h1></li>
+                  <li data-row="4" data-col="3" data-sizex="1" data-sizey="1"><h1>three</h1></li>
 
-		</div>
-	</div>
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="/public/js/dashboard.js"></script>
-</body>
+                  <li data-row="1" data-col="3" data-sizex="1" data-sizey="1"><h1>four</h1></li>
+                  <li data-row="2" data-col="3" data-sizex="1" data-sizey="1"><h1>four</h1></li>
+                  <li data-row="3" data-col="3" data-sizex="1" data-sizey="1"><h1>four</h1></li>
+                  <li data-row="4" data-col="3" data-sizex="1" data-sizey="1"><h1>four</h1></li>
+
+                  <li data-row="1" data-col="3" data-sizex="1" data-sizey="1"><h1>five</h1></li>
+                  <li data-row="2" data-col="3" data-sizex="1" data-sizey="1"><h1>five</h1></li>
+                  <li data-row="3" data-col="3" data-sizex="1" data-sizey="1"><h1>five</h1></li>
+                  <li data-row="4" data-col="3" data-sizex="1" data-sizey="1"><h1>five</h1></li> -->
+              </ul>
+          </div>
+      <!-- </section> -->
+      <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+      <script type="text/javascript" src="../public/js/jquery.js"></script>
+      <script type="text/javascript" src="../public/js/jquery.gridster.js" charster="utf-8"></script>
+      <script type="text/javascript" src="../public/js/dashboard.js" charster="utf-8"></script>
+
+  </body>
 </html>

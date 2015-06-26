@@ -30,9 +30,6 @@ var handlers = {
         return reply.redirect("/home");
     },
 
-    repos: function(request, reply){
-        reply.view('repos');
-    },
 
     home: function(request, reply){
       var context = {};
@@ -100,6 +97,10 @@ var handlers = {
       reply.view('dashboard', {repo: request.params.repo});
   },
 
+  // repos: function(request, reply){
+  //     reply.view('repos');
+  // },
+
   issue: function(request, reply){
       var repo = request.params.repo;
       var optIss = {
@@ -115,15 +116,6 @@ var handlers = {
       });
   },
 
-  board: function(request, reply){
-    //   console.log("GOT TO BOARD HANDLER");
-    //   console.log("UNPARSED");
-      console.log(request.payload.data);
-    //   console.log(JSON.parse(request.payload));
-      fs.writeFileSync('fakedb.js', request.payload.data.toString());
-      console.log("wrote to file");
-
-  },
 
   fetchBoard: function(request, reply){
       // get board positions from db
@@ -131,16 +123,28 @@ var handlers = {
       // get text from new, unpopulated issues and generate new cards
       //obj {old cards: json of old cards,
       //        new issues: text of new issues}
+      //
+    //   fs.readFile('fakedb.js', function(err, data){
+    //       if (err){
+    //           console.log(err);
+    //       }
+    //       console.log(data.toString());
+    //   });
+    var repo = request.params.repo;
+    var optIss = {
+        uri: 'https://api.github.com/repos/' + request.auth.credentials.profile.username + '/' + repo + '/issues',
+        method: 'GET',
+        headers: {
+          'Authorization': 'token ' + request.auth.credentials.token,
+          'User-Agent': request.auth.credentials.profile.username,
+        }
+    };
+    requestGithub(optIss, function(error, response, body){
+        reply(body);
+    });
 
-      fs.readFile('fakedb.js', function(err, data){
-          if (err){
-              console.log(err);
-          }
-          console.log(data.toString());
-      });
-
-      reply.view('board');
-  },
+      reply.view('dashboard');
+  }
 };
 
 module.exports = handlers;
