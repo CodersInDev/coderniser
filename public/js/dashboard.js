@@ -12,16 +12,15 @@ $(function() {
         $.get('/issues/' + repo, function(data){
             data = JSON.parse(data);
             console.log(data);
-            var fake = {col: 1}
             for (var i = 0; i < data.length; i++){
 
                 gridster.add_widget(
-                        "<div id='" + i + "'>'" + data[i].title + "</div>",
-                        //data[i]['size_x'],
-                        //data[i]['size_y'],
-                        fake.col,
-                        i
-                    );
+                    '<div id="' + i + '">' + data[i].title + '<br>' + data[i].body + '</br>Issue #' + data[i].number + '</div>',
+                    1,
+                    1,
+                    1,
+                    i+1
+                );
             }
         });
     }
@@ -66,7 +65,7 @@ $(function() {
     // var result = gridster.serialize_params;
     //console.log(gridster);
 
-    
+
 
     // ADD NEW ISSUES
 
