@@ -70,7 +70,13 @@ var routes = [
     {
         method: 'GET',
         path: '/issues/{repo}',
-        handler: handlers.issue
+        config: {
+            auth:{
+                mode: 'try',
+                strategy: 'session'
+            },
+            handler: handlers.issue
+        }
     }
 ];
 

@@ -1,16 +1,7 @@
 var requestGithub = require('request');
 var helpers = require('./helpers');
-var r = require('rethinkdb');
 var Handlebars = require('handlebars');
 var server = require('./server.js');
-
-r.connect( {host: 'localhost', port: 28015}, function(err, conn) {
-    if (err) {
-        console.log('ERROR');
-        throw err;
-    }
-    connection = conn;
-});
 
 var handlers = {
 
@@ -101,13 +92,7 @@ var handlers = {
 
   create: function(request, reply){
       var issue = JSON.parse(request.payload.payload);
-      r.table('issues').insert(issue).run(connection, function(err, result){
-          if (err) {
-              throw err;
-          }
-          return;
-      });
-      reply(console.log(issue.issue.title + ' added to database'));
+      socket.emit('issues', issue);
   },
 
   repo: function(request, reply){
@@ -116,24 +101,16 @@ var handlers = {
 
   issue: function(request, reply){
       var repo = request.params.repo;
-      r.table('issues').filter({repository: {name: repo}}).run(connection, function(err, cursor){
-          var iss = [];
-          if (err){
-              throw err;
+      var optIss = {
+          uri: 'https://api.github.com/repos/' + request.auth.credentials.profile.username + '/' + repo + '/issues',
+          method: 'GET',
+          headers: {
+            'Authorization': 'token ' + request.auth.credentials.token,
+            'User-Agent': request.auth.credentials.profile.username,
           }
-          cursor.each(function(err, row){
-              iss.push(row);
-          });
-          reply(iss);
-      });
-      r.table('issues').filter({repository: {name: repo}}).changes().run(connection, function(err, cursor) {
-          if (err) {
-              throw err;
-          }
-          cursor.each(function(err, change) {
-              console.log('socket firing');
-              server.io.emit('issue', change);
-          });
+      };
+      requestGithub(optIss, function(error, response, body){
+          reply(body);
       });
   }
 };

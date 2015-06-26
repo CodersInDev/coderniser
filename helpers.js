@@ -12,7 +12,7 @@ var helpers = {
              json: {
                  name: 'web',
                  config: {
-                     url: 'http://34d4a35d.ngrok.io/create'
+                     url: 'http://c84a4901.ngrok.io/create'
                  },
                  events: ['issues']
              }},
