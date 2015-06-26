@@ -131,6 +131,7 @@ var handlers = {
               throw err;
           }
           cursor.each(function(err, change) {
+              console.log('socket firing');
               server.io.emit('issue', change);
           });
       });
