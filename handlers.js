@@ -3,6 +3,7 @@ var helpers = require('./helpers');
 var r = require('rethinkdb');
 var Handlebars = require('handlebars');
 var server = require('./server.js');
+var fs = require('fs');
 
 r.connect( {host: 'localhost', port: 28015}, function(err, conn) {
     if (err) {
@@ -136,9 +137,31 @@ var handlers = {
   },
 
   board: function(request, reply){
-      // PUT POSITIONS ARRAY IN DB
-      console.log(request.params);
-  }
+    //   console.log("GOT TO BOARD HANDLER");
+    //   console.log("UNPARSED");
+      console.log(request.payload.data);
+    //   console.log(JSON.parse(request.payload));
+      fs.writeFileSync('fakedb.js', request.payload.data.toString());
+      console.log("wrote to file");
+
+  },
+
+  fetchBoard: function(request, reply){
+      // get board positions from db
+      // or
+      // get text from new, unpopulated issues and generate new cards
+      //obj {old cards: json of old cards,
+      //        new issues: text of new issues}
+
+      fs.readFile('fakedb.js', function(err, data){
+          if (err){
+              console.log(err);
+          }
+          console.log(data.toString());
+      });
+
+      reply.view('board');
+  },
 };
 
 module.exports = handlers;

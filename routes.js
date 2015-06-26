@@ -78,6 +78,12 @@ var routes = [
         path: '/board',
         handler: handlers.board
     },
+
+    {
+        method: 'GET',
+        path: '/board',
+        handler: handlers.fetchBoard
+    }
 ];
 
 module.exports = routes;
