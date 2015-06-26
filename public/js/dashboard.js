@@ -15,7 +15,7 @@ $(function() {
             for (var i = 0; i < data.length; i++){
 
                 gridster.add_widget(
-                    '<div id="' + i + '">' + data[i].title + '<br>' + data[i].body + '</br>Issue #' + data[i].number + '</div>',
+                    '<div class="card"> #' + data[i].number + '<br><strong>Issue: </strong>' + data[i].title + '<br>' + data[i].body + '<br><br><img src=' + data[i].user.avatar_url + '/>'+ data[i].user.login +'</div>',
                     1,
                     1,
                     1,
@@ -35,7 +35,7 @@ $(function() {
 
     gridster = $(".gridster").gridster({
         widget_margins: [10, 10],
-        widget_base_dimensions: [230, 100],
+        widget_base_dimensions: [250, 120],
         min_cols: 4,
         // draggc
         serialize_params: function($w, wgd) {
