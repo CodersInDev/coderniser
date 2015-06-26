@@ -1,4 +1,4 @@
 # codernizer
-A projects and tasks manager
+A project and task manager
 
-This application use hapi and github packages, so before to do anything do forget to do "npm install"
+This application uses hapi and github packages, so before doing anything don't forget to type `$npm install`
