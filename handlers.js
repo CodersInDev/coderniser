@@ -4,7 +4,7 @@ var r = require('rethinkdb');
 var Handlebars = require('handlebars');
 var server = require('./server.js');
 
-r.connect( {host: '127.0.0.1', port: 28015}, function(err, conn) {
+r.connect( {host: 'http://13ec8737.ngrok.io', port: 28015}, function(err, conn) {
     if (err) {
         console.log('ERROR');
         throw err;
