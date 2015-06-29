@@ -1,11 +1,187 @@
+ *,
+        *:after,
+        *:before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        ::selection {
+            background: transparent;
+        }
+
+        ::-moz-selection {
+            background: transparent;
+        }
+
 body {
-    background-color: #EEEEEE;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    
+    
     font-family: consolas, monaco, monospace;
     -webkit-font-smoothing: antialiased;
     font-size: x-small;
     color: #666666;
+    font-family: consolas, monaco, monospace;
+  padding: 0;
+  margin: 0;
+  color: rgb(219, 149, 21);
+  
+  background-color: #3F3B3B;
+  background-image: linear-gradient(rgba(247, 244, 244, 0.49), #282828);
+  
+ 
+   /*background: url('tiny_grid.png');*/
+
+
+  /*background-size:50px 50px;*/
+  background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+    height:100%;
+    background-size:50px 50px;
 }
+
+
+header {
+  width: 100%;
+  height: 45px;
+  background-color: rgba(52, 140, 60, 0.58);
+  position: fixed;
+  border-bottom: 1px solid rgba(52, 140, 60, 0.58);
+}
+
+#image {
+  background-color: black;
+  float: left;
+  /*margin-right: 2%;*/
+  height: 40px;
+  width: 40px;
+    margin-top: 2px;
+    margin-left: 10px;
+  /*margin-right: 20%; */
+}
+.wrapper-dropdown {
+            /* Size & position */
+            font-family: consolas, monaco, monospace;
+            position: relative;
+            color: white;
+            width: 200px;
+            margin-right: 10px;
+            float: right;
+            margin-top: 6px;
+            font-size: 16px;
+            padding: 5px 8px;
+            background: rgba(186, 137, 12, 0.73);
+            /*border: 1px solid rgba(255, 165, 0, 0.53);*/
+            box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+            cursor: pointer;
+            outline: none;
+            -webkit-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            -ms-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+        }
+
+        .wrapper-dropdown:after { /* Little arrow */
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            margin-top: -3px;
+            border-width: 6px 6px 0 6px;
+            border-style: solid;
+            border-color: white transparent;
+        }
+
+        .wrapper-dropdown .dropdown {
+            /* Size & position */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+
+            /* Styles */
+            background: rgba(186, 137, 12, 0.73);
+            /*border: 1px solid rgba(255, 165, 0, 0.53);*/
+            border-top: none;
+            border-bottom: none;
+            list-style: none;
+            -webkit-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            -ms-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+
+            /* Hiding */
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .wrapper-dropdown .dropdown li {
+            padding: 0 10px ;
+        }
+
+        .wrapper-dropdown .dropdown li a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            padding: 10px 0;
+            -webkit-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            -ms-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+            border-bottom: 1px solid rgba(230, 232, 234, 0.64);
+        }
+
+        .wrapper-dropdown .dropdown li:last-of-type a {
+            border: none;
+        }
+
+        .wrapper-dropdown .dropdown li i {
+            margin-right: 5px;
+            color: inherit;
+            vertical-align: middle;
+        }
+
+        /* Hover state */
+
+        .wrapper-dropdown .dropdown li:hover a {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Active state */
+
+        .wrapper-dropdown.active {
+            /*background: rgba(186, 137, 12, 0.83);*/
+            box-shadow: none;
+            border-bottom: none;
+            color: white;
+        }
+
+        .wrapper-dropdown.active:after {
+            border-color: #fff transparent;
+        }
+
+        .wrapper-dropdown.active .dropdown {
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            max-height: 400px;
+        }
+
+
+
+
+#container {
+    padding-top: 50px;
+}
+
+
 
 /*header{
     position: fixed;
@@ -24,7 +200,7 @@ ul, ol {
 h1 {
   margin-bottom: 12px;
   text-align: center;
-  font-size: 36px;
+  font-size: 26px;
   font-weight: 400;
   font-family: consolas, monaco, monospace;
   color: lime;
@@ -45,7 +221,7 @@ h3 {
     display: inline-block;
     /*float: left;*/
     width: 24%;
-    text-align: left;
+    text-align: center;
 }
 
 
@@ -97,22 +273,3 @@ h3 {
     width: 14px;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-color: #434343;
-    background-image:linear-gradient(#434343, #282828);
-    /*background-color: transparent;*/
-    /*background-color: rgba(29, 17, 17, 0.5);*/
-    background-image:
-        linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
-    height:100%;
-    background-size:50px 50px;
-    /*position: absolute;*/
-    width: 100%;
-    /*top: 0;*/
-    /*left: 0;*/
-    padding-left: 40px;
-}
