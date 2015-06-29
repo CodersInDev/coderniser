@@ -10,7 +10,19 @@
       <!-- <link rel="stylesheet" type="text/css" href="../public/css/login.css"> -->
   </head>
   <body>
-      <!-- <section class="demo"> -->
+      <header>
+
+            <div id="dd" class="wrapper-dropdown" tabindex="1">User
+                <ul class="dropdown">
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+            <!-- <div id="image">
+            <img src={{avatar}} alt="" style="width:40px" />
+        </div> -->
+        </header>
+        <div id='container'>
           <div id='headers'>
               <h1 class='tracker' id='later'>Later</h1>
               <h1 class='tracker'>Soon</h1>
@@ -49,11 +61,39 @@
                   <li data-row="4" data-col="3" data-sizex="1" data-sizey="1"><h1>five</h1></li> -->
               </ul>
           </div>
+        </div>
       <!-- </section> -->
       <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
       <script type="text/javascript" src="../public/js/jquery.js"></script>
       <script type="text/javascript" src="../public/js/jquery.gridster.js" charster="utf-8"></script>
       <script type="text/javascript" src="../public/js/dashboard.js" charster="utf-8"></script>
+      <script type="text/javascript">
+            function DropDown(el) {
+                this.dd = el;
+                this.initEvents();
+            }
+            DropDown.prototype = {
+                initEvents : function() {
+                    var obj = this;
+
+                    obj.dd.on('click', function(event){
+                        $(this).toggleClass('active');
+                        event.stopPropagation();
+                    });
+                }
+            };
+
+            $(function() {
+
+                var dd = new DropDown( $('#dd') );
+
+                $(document).click(function() {
+                    // all dropdowns
+                    $('.wrapper-dropdown').removeClass('active');
+                });
+
+            });
+        </script>
 
   </body>
 </html>
